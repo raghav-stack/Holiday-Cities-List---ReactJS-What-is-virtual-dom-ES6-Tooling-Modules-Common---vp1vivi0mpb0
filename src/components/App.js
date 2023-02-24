@@ -44,11 +44,13 @@ class App extends Component {
     let j = 1;
     for (let i = 0; i < this.cityList.length; i++) {
       if (this.cityList[i].country === "India") {
-        a.push(<li key={"location" + j}>{this.cityList[i].name}</li>);
+        a.push(<li key={"location" + j++}>{this.cityList[i].name}</li>);
         j++;
       }
     }
+    return a;
   }
+
   render() {
     return <ol>{this.valid()}</ol>;
   }
