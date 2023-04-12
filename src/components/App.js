@@ -13,48 +13,52 @@ class App extends Component {
       { name: "Darjeeling", country: "India" },
       { name: "Tokyo", country: "Japan" },
       { name: "Lonavala", country: "India" },
-      { name: "Brandenburg Gate", country: "Germany" },
-      { name: "Reichstag Building", country: "Germany" },
-      { name: "Museum Island", country: "Germany" },
-      { name: "Munnar", country: "India" },
-      { name: "Leh Ladakh", country: "India" },
-      { name: "Goa", country: "India" },
-      { name: "Agra", country: "India" },
-      { name: "Dalhousie", country: "India" },
-      { name: "Coorg", country: "India" },
-      { name: "Rome", country: "Italy" },
-      { name: "Milan", country: "Italy" },
-      { name: "Venice", country: "Italy" },
-      { name: "Varanasai", country: "India" },
-      { name: "Jaipur", country: "India" },
-      { name: "The Hofburg", country: "Austria" },
-      { name: "Belvedere Palace", country: "Austria" },
-      { name: "St. Stephen Cathedral", country: "Austria" },
-      { name: "Kahna National Park", country: "India" },
-      { name: "Amritsar", country: "India" },
-      { name: "Mussoorie", country: "India" },
-      { name: "Mount Abu", country: "India" },
-      { name: "Tirupati", country: "India" }
-    ];
-    this.valid = this.valid.bind(this);
-  }
-
-  valid() {
-    let a = [];
-    let j = 1;
-    for (let i = 0; i < this.cityList.length; i++) {
-      if (this.cityList[i].country === "India") {
-        a.push(<li key={"location" + j++}>{this.cityList[i].name}</li>);
-        j++;
-      }
-    }
-    return a;
+      // { name: "Brandenburg Gate", country: "Germany" },
+      // { name: "Reichstag Building", country: "Germany" },
+      // { name: "Museum Island", country: "Germany" },
+      // { name: "Munnar", country: "India" },
+      // { name: "Leh Ladakh", country: "India" },
+      // { name: "Goa", country: "India" },
+      // { name: "Agra", country: "India" },
+      // { name: "Dalhousie", country: "India" },
+      // { name: "Coorg", country: "India" },
+      // { name: "Rome", country: "Italy" },
+      // { name: "Milan", country: "Italy" },
+      // { name: "Venice", country: "Italy" },
+      // { name: "Varanasai", country: "India" },
+      // { name: "Jaipur", country: "India" },
+      // { name: "The Hofburg", country: "Austria" },
+      // { name: "Belvedere Palace", country: "Austria" },
+      // { name: "St. Stephen Cathedral", country: "Austria" },
+      // { name: "Kahna National Park", country: "India" },
+      // { name: "Amritsar", country: "India" },
+      // { name: "Mussoorie", country: "India" },
+      // { name: "Mount Abu", country: "India" },
+      // { name: "Tirupati", country: "India" }
+    ]
   }
 
   render() {
-    return <ol>{this.valid()}</ol>;
+    let count =0;
+    return (
+      <div id="main">
+        <ol>
+          {this.cityList.filter(city=>{
+            if(city.country==="India"){
+              count++
+            }
+            return city.country==="India"&&count<=3
+    
+          }).map((city,index)=>{
+           return <li key={`location${index+1}`}>{city.name}</li>
+          })}
+        </ol>
+        
+      </div>
+    )
   }
 }
+
 
 
 export default App;
